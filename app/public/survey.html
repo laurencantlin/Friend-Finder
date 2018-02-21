@@ -289,7 +289,7 @@
         </div>
         <br>
         <br>
-        <button type="submit" class="btn btn-lg btn-primary btn-block" id="submit">
+        <button type="button" class="btn btn-lg btn-primary btn-block" data-target="#myModal" data-toggle="modal" id="submit">
             <span class="glyphicon glyphicon-list-alt">
             </span>
             Submit </button>
@@ -298,6 +298,33 @@
         <a href="#" id="consoleAPIFriends"> API Friends List </a>
         <br>
         <br>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="modal-title" id="myModalLabel">Best Matches</h2>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="extra-button" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary" id="modal-button">Save changes</button> -->
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -331,6 +358,9 @@
             // If requirements arent met:
             if (newFriend.friendName == "" || newFriend.photoURL == "" || newFriend.scoreArray.includes(NaN)) {
                 console.log("all required fields are not met");
+                $(".modal-body").text("all required fields are not met");
+                // $("#extra-button").addClass("hidden");
+                // $("#modal-button").text("Okay");
                 $.ajax({ url: "/api/friends", method: "GET" })
                     .then(function (friendsData) {
                         console.log(friendsData.length)
@@ -344,6 +374,8 @@
                         console.log(friendsData.length)
                         if (friendsData.length == 0) {
                             console.log("empty array")
+                            $(".modal-body").text("No other users currently in system to match with");
+
                         }
                         else {
                             var compatabilityScores = [];
@@ -360,7 +392,7 @@
                                 }
                                 var compatability = {
                                     friendName: friend['friendName'],
-                                    photoURL: friend['friendName'],
+                                    photoURL: friend['photoURL'],
                                     score: totalDif
                                 }
                                 compatabilityScores.push(compatability);
@@ -380,7 +412,13 @@
                                 friend = compatabilityScores[i]
                                 var friendScore = friend['score'];
                                 if (friendScore == Math.min(...scoresOnly)) {
-                                    console.log(compatabilityScores[i]);
+                                    // console.log(compatabilityScores[i]);
+                                    console.log("match", friend['friendName']);
+                                    $(".modal-body").text("");
+                                    $(".modal-body").append(friend['friendName']);
+                                    $(".modal-body").append("<img src=" + friend['photoURL'] + " class='img-responsive'>");
+
+
                                 }
                             }
                         }
