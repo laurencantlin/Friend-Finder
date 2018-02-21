@@ -300,10 +300,7 @@
         <br>
     </div>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-    </button>
+  
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -334,6 +331,7 @@
         $("#consoleAPIFriends").on("click", function (event) {
             $.ajax({ url: "/api/friends", method: "GET" })
                 .then(function (friendsData) {
+                    window.location.href = "https://polar-woodland-51855.herokuapp.com/api/survey";
                     if (friendsData.length == 0) {
                         console.log("empty array")
 
@@ -353,8 +351,6 @@
                 scoreArray: [parseInt($("#q1").text()), parseInt($("#q2").text()), parseInt($("#q3").text()), parseInt($("#q4").text()), parseInt($("#q5").text()), parseInt($("#q6").text()), parseInt($("#q7").text()), parseInt($("#q8").text()), parseInt($("#q9").text()), parseInt($("#q10").text())
                 ]
             }
-
-
             // If requirements arent met:
             if (newFriend.friendName == "" || newFriend.photoURL == "" || newFriend.scoreArray.includes(NaN)) {
                 console.log("all required fields are not met");
@@ -365,17 +361,15 @@
                     .then(function (friendsData) {
                         console.log(friendsData.length)
                     });
-
             }
             // If requirements ARE met:
             else {
                 $.ajax({ url: "/api/friends", method: "GET" })
                     .then(function (friendsData) {
-                        console.log(friendsData.length)
+                        // console.log(friendsData.length)
                         if (friendsData.length == 0) {
-                            console.log("empty array")
+                            // console.log("empty array")
                             $(".modal-body").text("No other users currently in system to match with");
-
                         }
                         else {
                             var compatabilityScores = [];
@@ -399,15 +393,14 @@
                                 scoresOnly.push(compatability.score);
                                 console.log(friend['friendName'], totalDif);
                             }
-                            console.log("not empty")
                             for (var i = 0; i < friendsData.length; i++) {
                                 var friend = friendsData[i];
                                 var friendScore = friend['scoreArray[]'];
                                 compare(newFriend, friend);
                             }
-                            console.log(compatabilityScores);
-                            console.log(scoresOnly);
-                            console.log(Math.min(...scoresOnly));
+                            // console.log(compatabilityScores);
+                            // console.log(scoresOnly);
+                            // console.log(Math.min(...scoresOnly));
                             for (var i = 0; i < compatabilityScores.length; i++) {
                                 friend = compatabilityScores[i]
                                 var friendScore = friend['score'];
@@ -423,15 +416,14 @@
                             }
                         }
                     })
-                // console.log("requirements completed")
-                // console.log(newFriend);
-                $.post("/api/friends", newFriend, function (data) {
+                    $.post("/api/friends", newFriend, function (data) {
                     console.log(data)
                 });
             }
         });
 
         $(".dropdown-menu li a").click(function () {
+            event.preventDefault();
             var selText = $(this).text();
             $(this).parents(".btn-group").find(".dropdown-toggle").html(selText + " <span class='caret'></span>").addClass("completed");
         })
