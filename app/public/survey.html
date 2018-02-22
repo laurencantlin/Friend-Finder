@@ -331,7 +331,7 @@
         $("#consoleAPIFriends").on("click", function (event) {
             $.ajax({ url: "/api/friends", method: "GET" })
                 .then(function (friendsData) {
-                    window.location.href = "https://polar-woodland-51855.herokuapp.com/api/friends";
+                    window.location.href = "https://infinite-island-21434.herokuapp.com/api/friends";
                     if (friendsData.length == 0) {
                         console.log("empty array")
 
