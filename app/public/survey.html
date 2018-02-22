@@ -19,7 +19,7 @@
         <input type="text" class="form-control" id="photo-url-input">
         <hr>
         <h3>Question 1</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>You would rather improvise than spend time coming up with a detailed plan</h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q1">
@@ -46,7 +46,8 @@
         </div>
 
         <h3>Question 2</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>You often spend time exploring unrealistic and impractical yet intriguing ideas.
+        </h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q2">
@@ -73,7 +74,7 @@
         </div>
 
         <h3>Question 3</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>Your travel plans are usually well thought out.<h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q3">
@@ -100,7 +101,8 @@
         </div>
 
         <h3>Question 4</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>You are a relatively reserved and quiet person.
+        </h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q4">
@@ -127,7 +129,7 @@
         </div>
 
         <h3>Question 5</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>Logic is usually more important than heart when it comes to making important decisions.</h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q5">
@@ -154,7 +156,8 @@
         </div>
 
         <h3>Question 6</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>Keeping your options open is more important than having a to-do list.
+        </h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q6">
@@ -181,7 +184,7 @@
         </div>
 
         <h3>Question 7</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>If your friend is sad about something, you are more likely to offer emotional support than suggest ways to deal with the problem</h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q7">
@@ -208,7 +211,8 @@
         </div>
 
         <h3>Question 8</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>Being right is more important than being cooperative when it comes to teamwork.
+        </h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q8">
@@ -235,7 +239,8 @@
         </div>
 
         <h3>Question 9</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>You feel more energetic after spending time with a group of people.
+        </h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q9">
@@ -262,7 +267,8 @@
         </div>
 
         <h3>Question 10</h3>
-        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <h4>You consider yourself more practical than creative.
+        </h4>
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle question" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="q10">
@@ -295,7 +301,7 @@
             Submit </button>
 
         <hr>
-        <a href="#" id="consoleAPIFriends"> API Friends List </a>
+        <a href="/api/friends" id="consoleAPIFriends"> API Friends List </a>
         <br>
         <br>
     </div>
@@ -328,20 +334,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $("#consoleAPIFriends").on("click", function (event) {
-            $.ajax({ url: "/api/friends", method: "GET" })
-                .then(function (friendsData) {
-                    window.location.href = "https://infinite-island-21434.herokuapp.com/api/friends";
-                    if (friendsData.length == 0) {
-                        console.log("empty array")
+        // $("#consoleAPIFriends").on("click", function (event) {
+        //     $.ajax({ url: "/api/friends", method: "GET" })
+        //         .done(function (friendsData) {
+        //             event.preventDefault()
+        //             window.location.href = "http://localhost:8080/api/friends";
+        //             console.log(friendsData);
+        //             if (friendsData.length == 0) {
+        //                 console.log("empty array")
 
-                    }
-                    else {
-                        console.log("not empty")
-                        console.log(friendsData);
-                    }
-                })
-        })
+        //             }
+        //             else {
+        //                 console.log("not empty")
+        //                 console.log(friendsData);
+        //             }
+        //         })
+        // })
 
         $("#submit").on("click", function (event) {
             event.preventDefault();
