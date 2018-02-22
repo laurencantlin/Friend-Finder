@@ -300,7 +300,7 @@
         <br>
     </div>
 
-
+  
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -318,7 +318,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" id="extra-button" data-dismiss="modal">Close</button>
                     <!-- <button type="button" class="btn btn-primary" id="modal-button">Save changes</button> -->
-
+                    
                 </div>
             </div>
         </div>
@@ -329,9 +329,9 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript">
         $("#consoleAPIFriends").on("click", function (event) {
-            $.ajax({ url: "http://localhost:8080/api/friends", method: "GET" })
+            $.ajax({ url: "/api/friends", method: "GET" })
                 .then(function (friendsData) {
-                    window.location.href= "https://boiling-shelf-28369.herokuapp.com/api/friends" 
+                    window.location.href = "https://polar-woodland-51855.herokuapp.com/api/friends";
                     if (friendsData.length == 0) {
                         console.log("empty array")
 
@@ -416,7 +416,7 @@
                             }
                         }
                     })
-                $.post("/api/friends", newFriend, function (data) {
+                    $.post("/api/friends", newFriend, function (data) {
                     console.log(data)
                 });
             }
