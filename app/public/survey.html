@@ -331,7 +331,7 @@
         $("#consoleAPIFriends").on("click", function (event) {
             $.ajax({ url: "http://localhost:8080/api/friends", method: "GET" })
                 .then(function (friendsData) {
-                    window.location.href= "https://boiling-shelf-28369.herokuapp.com/api/friends" 
+                    window.location.href= "https://pacific-dusk-74221.herokuapp.com/api/friends" 
                     if (friendsData.length == 0) {
                         console.log("empty array")
 
