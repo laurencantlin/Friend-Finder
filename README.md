@@ -2,7 +2,7 @@
 ## Overview
 A compatibility-based "FriendFinder" application -- basically a dating app. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
 
-Live site: https://polar-woodland-51855.herokuapp.com/
+Live site: https://infinite-island-21434.herokuapp.com/survey
 
 ## Built With
 * [Express]() - Node.js framework
